@@ -1,7 +1,5 @@
 package be_study.start;
 
-import src.be_study.start.String;
-
 public class HelloWorld {
 
 	public static void main(String[] args) {
