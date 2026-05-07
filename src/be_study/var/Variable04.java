@@ -46,6 +46,9 @@ public class Variable04 {
 		String s11 = String.valueOf(123);
 		String s12 = String.valueOf(133.568);
 		
+		String s13 = 123 + ""; // "123"
+				//	 int + String -> String
+		
 	}
 
 }
