@@ -99,9 +99,9 @@ public class Cond04 {
 			System.out.println("잘줬네");
 			} else {
 			System.out.println("아쉽네");
-			} else {
+			} 
+		}else {
 			System.out.println("잘못된 점수가 들어왔습니다. 점수는 0~100점만 가능");
-			}
 		}
 	}
 
