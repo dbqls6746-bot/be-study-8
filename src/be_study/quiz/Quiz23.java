@@ -52,107 +52,113 @@ public class Quiz23 {
 //		+ 각 탑승 인원의 무게도 랜덤으로 추출합니다. (40 kg ~ 150 kg)
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random();
+				
+				System.out.print("엘리베이터가 멈출 수 있는 최대 횟수를 입력해주세요 : ");
+				int stop = scanner.nextInt();
+				int st = 0; 
+				
+				System.out.print("엘리베이터의 총 무게 및 정원을 입력해주세요 (무게 정원 순) : ");
+				int w = scanner.nextInt();
+				int p = scanner.nextInt(); 
+				
+				int wait = random.nextInt(15) + 1;
+				System.out.println("현재 대기 인원 : " + wait + "명");
+				
+				int checkWeight = 0; 
+				int count = 0;      
+				
+				// [수정] 100층까지 인덱스를 안전하게 쓰기 위해 크기를 101로 변경
+				int[] outCount = new int[101]; 
+		        
+				System.out.println("----------탑승 시작------------");
+				
+				for(int i = 0; i < wait; i++) {
+					int weight = random.nextInt(111) + 40; // 40kg ~ 150kg
+					
+					// [수정] 2층부터 100층까지 안전하게 생성 (nextInt(99)는 0~98 반환)
+					int floor = random.nextInt(99) + 2;
+					
+					System.out.print((i + 1) + "번째 대기자 (무게: " + weight + "kg, 목적지: " + floor + "층)  ");
+					
+					if (count + 1 <= p && checkWeight + weight <= w) {
+						count++;
+						checkWeight += weight;
+						outCount[floor]++;
+						System.out.println("탑승 성공 (현재 인원: " + count + "명, 누적 무게: " + checkWeight + "kg)");
+					} else {
+						System.out.println("탑승 실패 (정원 또는 무게 초과). 이후 대기자는 탑승하지 않습니다.");
+						break;
+					}
+				}
+				
+				System.out.println("인원: " + count + "명, 총 무게: " + checkWeight + "kg");
+				if (count == 0) {
+					System.out.println("탑승한 승객이 없어 운행을 종료합니다.");
+					return;
+				}
+				
+				System.out.println("----------------운행 시작합니다-----------------");
+				for(int fl = 1; fl <= 100; fl++) {
+					System.out.println("현재 층은 " + fl + "층 입니다.");
+				
+					if (outCount[fl] > 0) {
+						System.out.println(fl + "층에서 승객 " + outCount[fl] + "명이 하차하겠습니다.");
+						st++;
+
+						if (stop == st) {
+							System.out.println("부실 공사로 인한 전력 한계 도달!");
+							System.out.println(fl + "층 점검중 - 모든 승객들은 내려 계단으로 가주세요.");
+							return; 
+						}
+					}
+				}
+				
+				System.out.println("---------------하강을 시작합니다---------------------");
+				for(int fl = 100; fl >= 1; fl--) {
+					System.out.println("현재 층은 " + fl + "층 입니다.");
+				}
+				System.out.println("-------------------운행을 종료합니다.----------------------");
+			
 		
-//		System.out.print("엘리베이터가 멈출 수 있는 최대 횟수를 입력해주세요 : ");
-//		int stop = scanner.nextInt();
-//		int st = 0; 
+		
+//		System.out.print("탑승 인원 수 입력 : ");
+//		int personCount = scanner.nextInt();
 //		
-//		System.out.print("엘리베이터의 총 무게 및 정원을 입력해주세요 (무게 정원 순) : ");
-//		int w = scanner.nextInt();
-//		int p = scanner.nextInt(); 
-//		
-//		int wait = random.nextInt(15) + 1;
-//		System.out.println("현재 대기 인원 : " + wait + "명");
-//		
-//		int checkWeight = 0; 
-//        int count = 0;      
-//		
-//        int[] outCount = new int[100]; 
-//        
-//		System.out.println("----------탑승 시작------------");
-//		
-//		for(int i = 0; i < wait; i++) {
-//			int weight = random.nextInt(111) + 40;
-//			int floor = random.nextInt(100) + 2;
-//			
-//			System.out.print((i + 1) + "번째 대기자 (무게: " + weight + "kg, 목적지: " + floor + "층)  ");
-//			
-//			if (count + 1 <= p && checkWeight + weight <= w) {
-//	            count++;
-//	            checkWeight += weight;
-//	            outCount[floor]++;
-//	            System.out.println("탑승 성공 (현재 인원: " + count + "명, 누적 무게: " + checkWeight + "kg)");
-//	        } else {
-//	            System.out.println("탑승 실패 (정원 또는 무게 초과). 이후 대기자는 탑승하지 않습니다.");
-//	            break;
-//	        }
+//		int[] destFloorArr = new int[personCount];
+//		System.out.print("목적지 층수 입력(2~100) : ");
+////		
+//		//for 문
+//		for(int i=0; i<destFloorArr.length; i++) {
+//			destFloorArr[i] = scanner.nextInt();
 //		}
-//		
-//		System.out.println("인원: " + count + "명, 총 무게: " + checkWeight + "kg");
-//		if (count == 0) {
-//			System.out.println("탑승한 승객이 없어 운행을 종료합니다.");
-//			return;
-//		}
-//		
-//		System.out.println("----------------운행 시작합니다-----------------");
-//		for(int fl = 1; fl <= 100; fl++) {
-//			System.out.println("현재 층은 " + fl + "층 입니다.");
-//		
-//			if (outCount[fl] > 0) {
-//				System.out.println( + fl + "층에서 승객 " + outCount[fl] + "명이 하차하겠습니다.");
-//				st++;
-//
-//				if (stop == st) {
-//					System.out.println("부실 공사로 인한 전력 한계 도달!");
-//					System.out.println(fl + "층 점검중 - 모든 승객들은 내려 계단으로 가주세요.");
-//					return; 
+////		
+//		System.out.print("최대 멈춤 횟수 입력 : ");
+//		int maxStopCount = scanner.nextInt();
+//		int stopCount = 0;
+//		for(int floor=1; floor<=100; floor++) {
+//			System.out.println(floor + "층");
+//			
+//			for(int i=0; i<destFloorArr.length;i++) {
+//				if (floor==destFloorArr[i]) {
+//					System.out.println(">>> 도착 (승객하차)");
+//					stopCount++;
+//					
 //				}
 //			}
+//			if(stopCount == maxStopCount ) {
+//				System.out.println("===운행중지 (점검중) ===");
+//				System.out.println("===계단을 이용해주세요==");
+//				break;
+//			}
+//			for(floor=100; floor>=1; floor--) {
+//				System.out.println(floor + "층");
+//				break;
+//			}
 //		}
-//		
-//		System.out.println("---------------하강을 시작합니다---------------------");
-//		for(int fl = 100; fl >= 1; fl--) {
-//			System.out.println("현재 층은 " + fl + "층 입니다.");
-//		}
-//		System.out.println("-------------------운행을 종료합니다.----------------------");
-		
-		System.out.print("탑승 인원 수 입력 : ");
-		int personCount = scanner.nextInt();
-		
-		int[] destFloorArr = new int[personCount];
-		System.out.print("목적지 층수 입력(2~100) : ");
-//		
-		//for 문
-		for(int i=0; i<destFloorArr.length; i++) {
-			destFloorArr[i] = scanner.nextInt();
-		}
-//		
-		System.out.print("최대 멈춤 횟수 입력 : ");
-		int maxStopCount = scanner.nextInt();
-		int stopCount = 0;
-		for(int floor=1; floor<=100; floor++) {
-			System.out.println(floor + "층");
-			
-			for(int i=0; i<destFloorArr.length;i++) {
-				if (floor==destFloorArr[i]) {
-					System.out.println(">>> 도착 (승객하차)");
-					stopCount++;
-					break;
-				}
-			}
-			if(stopCount == maxStopCount ) {
-				System.out.println("===운행중지 (점검중) ===");
-				System.out.println("===계단을 이용해주세요==");
-				break;
-			}
-		}
 		
 		
 		
-		for(int floor=100; floor>=1; floor--) {
-			System.out.println(floor + "층");
-			break;
-		}
+		
 //		
 //		int floor = 1;
 //		boolean isUp = true;
@@ -197,5 +203,5 @@ public class Quiz23 {
 //			floor = floor + flow;
 //			}
 		}
-	}
+}
 
