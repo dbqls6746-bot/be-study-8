@@ -127,18 +127,32 @@ public class Quiz23 {
 			destFloorArr[i] = scanner.nextInt();
 		}
 //		
-//		for(int floor=1; floor<=100; floor++) {
-//			System.out.println(floor + "층");
-//			
-//			for(int i=0; i<destFloorArr.length;i++) {
-//				if (floor==destFloorArr[i]) {
-//					System.out.println(">>> 도착 (승객하차)");
-//				}
-//			}
-//		}
-//		for(int floor=100; floor>=1; floor--) {
-//			System.out.println(floor + "층");
-//		}
+		System.out.print("최대 멈춤 횟수 입력 : ");
+		int maxStopCount = scanner.nextInt();
+		int stopCount = 0;
+		for(int floor=1; floor<=100; floor++) {
+			System.out.println(floor + "층");
+			
+			for(int i=0; i<destFloorArr.length;i++) {
+				if (floor==destFloorArr[i]) {
+					System.out.println(">>> 도착 (승객하차)");
+					stopCount++;
+					break;
+				}
+			}
+			if(stopCount == maxStopCount ) {
+				System.out.println("===운행중지 (점검중) ===");
+				System.out.println("===계단을 이용해주세요==");
+				break;
+			}
+		}
+		
+		
+		
+		for(int floor=100; floor>=1; floor--) {
+			System.out.println(floor + "층");
+			break;
+		}
 //		
 //		int floor = 1;
 //		boolean isUp = true;
@@ -159,29 +173,29 @@ public class Quiz23 {
 //		}
 		
 
-		int floor = 1;
-		int flow = 1;
-		
-		if(flow == 1) {
-		for(floor=1; floor<=100; floor++) {
-			System.out.println(floor + "층");
-			
-			for(int i=0; i<destFloorArr.length;i++) {
-				if (floor==destFloorArr[i]) {
-					System.out.println(">>> 도착 (승객하차)");
-				}
-			}
-		}
-		while(true) {
-			System.out.println(floor + "층");
-			if(floor == 1 && flow == -1) {
-				break;
-			}
-			if(floor == 100) {
-				flow = -1;
-			}
-			floor = floor + flow;
-			}
+//		int floor = 1;
+//		int flow = 1;
+//		
+//		if(flow == 1) {
+//		for(floor=1; floor<=100; floor++) {
+//			System.out.println(floor + "층");
+//			
+//			for(int i=0; i<destFloorArr.length;i++) {
+//				if (floor==destFloorArr[i]) {
+//					System.out.println(">>> 도착 (승객하차)");
+//				}
+//			}
+//		}
+//		
+//			
+//			if(floor == 1 && flow == -1) {
+//				break;
+//			}
+//			if(floor == 100) {
+//				flow = -1;
+//			}
+//			floor = floor + flow;
+//			}
 		}
 	}
-}
+
