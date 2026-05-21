@@ -7,7 +7,6 @@ public class Monitor {
 	//모니터 클래스 생성
 //	*속성
 //	인치수(int타입)
-//	제조사(String타입)
 //	모델명(String타입)
 //
 //	*생성자
