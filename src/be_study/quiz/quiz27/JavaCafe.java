@@ -7,6 +7,7 @@ public class JavaCafe {
 		printPay(10.00, 50);
 		printPay(7.50, 38);
 		printPay(8.50, 66);
+	}
 		// 시급과 일한 시간을 입력받아, 주급을 출력
 		public static void printPay(double basePay, int hours) {
 		double pay = 0.0;
