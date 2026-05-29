@@ -4,11 +4,11 @@ import be_study.inherit.inherit01.Parent;
 
 public class HideChild extends Parent {
 
-	HideChild(){
+	public HideChild(){
 		super(0);
 	}
 	
-	HideChild(int money){
+	public HideChild(int money){
 		super(money);
 	}
 }

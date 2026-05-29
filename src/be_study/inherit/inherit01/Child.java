@@ -15,14 +15,14 @@ public class Child extends Parent {  //extends 상속받을부모클래스
 		System.out.println("Child() 생성자 호출됨");
 	}
 	
-	Child(String school, int grade){
+	public Child(String school, int grade){
 		super(0); // 부모생성자 먼저 호출..
 		//그 다음에 자식객체 생성자에서 할일 코드를...
 		this.school = school;
 		this.grade = grade;
 	}
 	
-	Child(String school, int grade, int money){
+	public Child(String school, int grade, int money){
 		super(money);
 		this.school = school;
 		this.grade = grade;
