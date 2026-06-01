@@ -1,0 +1,6 @@
+package be_study.inter.inter03;
+
+public interface Connectable {
+	//무선/블루투스로 연결할 수 있는
+	public void connect(); //연결
+}
