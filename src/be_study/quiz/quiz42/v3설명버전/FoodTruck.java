@@ -22,7 +22,7 @@ public class FoodTruck {
 	}
 	
 	public FoodTruck(String truckName) {
-		truckName = null;
+		this.truckName = truckName;
 		totalSales = 0;
 		isOpened = false;
 		menuList = new ArrayList<Food>();
