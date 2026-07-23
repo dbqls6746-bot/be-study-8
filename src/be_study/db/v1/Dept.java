@@ -32,6 +32,10 @@ public class Dept {
 	public void setLoc(String loc) {
 		this.loc = loc;
 	}
+	@Override
+	public String toString() {
+		return "Dept [deptno=" + deptno + ", dname=" + dname + ", loc=" + loc + "]";
+	}
 	
 	
 }
