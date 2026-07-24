@@ -270,4 +270,63 @@ public class DeptDAO {
 	public int removeDept(Dept dept) {
 		return removeDept(dept.getDeptno());
 	}
+	
+	
+	//Update
+	public int modifyDept(Dept dept) {	// PK 컬럼 deptno 값을 기준으로 다른 값을 수정
+		Connection conn = null; //db 연결
+		PreparedStatement psmt = null; //db 연결해서 sql 명령 실행해주는 객체
+		ResultSet rs = null; //sql 실행 후 select 결과를 저장하는 객체
+		
+		conn=DBConnectionManager.connectDB();
+		
+		//실행할 쿼리 준비
+		String sqlQuery = " update dept set dname = ?, loc = ? where deptno = ?  ";
+		
+		int result = 0;
+		
+		//쿼리 실행, 실행 후 후속 데이터 처리
+		try {
+		
+			psmt = conn.prepareStatement(sqlQuery);
+			
+			psmt.setString(1, dept.getDname());
+			psmt.setString(2, dept.getLoc());
+			psmt.setInt(3, dept.getDeptno());
+			//rs = psmt.executeQuery(); //select
+			
+			// INSERT UPDATE DELETE -> 적용된 행 객수
+			// executeUpdate();
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+		e.printStackTrace();
+		}finally {
+			DBConnectionManager.disconnectDB(conn, psmt, rs);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

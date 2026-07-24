@@ -116,5 +116,47 @@ public class DBSampleMain {
 			System.out.println(p.toString());
 		}
 	}
+	
+	
+	
+	//---------------------------------------------------------
+	
+	// 기존 값 조회 -> 보유 -> 일부 변경 -> 변경사항을 반영(DB저장/update)
+	
+	Dept up1 = deptDAO.findDeptByDeptno(81);
+	//pk 81 dept 항목 조회
+	// FE 사용자에게 표시
+	// 사용자가 변경할 값을 입력/수정
+	
+	//81	dn81	loc81
+	//81	dn81	ASAN
+	up1.setLoc("ASAN");
+	
+	int result10 = deptDAO.modifyDept(up1);
+	if(result10 > 0) {
+		System.out.println("업데이트 성공");
+	}
+	
+	
+	//82	dn82	loc82
+	Dept up2 = new Dept(82, "LAW","");
+	int result11 = deptDAO.modifyDept(up2);
+	if(result11 > 0) {
+		System.out.println("업데이트 성공22");
+	}
+	
+	//83	dn83	loc83
+	Dept up3 = new Dept(83, null,"ULSAN");
+	int result12 = deptDAO.modifyDept(up3);
+	if(result12 > 0) {
+		System.out.println("업데이트 성공333");
+	}
+	
+	//81	dn81	ASAN
+		Dept up4 = new Dept(81, "FREE","ASAN");
+		int result13 = deptDAO.modifyDept(up4);
+		if(result13 > 0) {
+			System.out.println("업데이트 성공4444");
+		}
 	}
 }
