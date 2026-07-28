@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class ApiExplorer {
     public static void main(String[] args) throws IOException {
-    	
+    	//http://www.data.go.kr/data.15073861/openapi.do
     	//대기질 예보 통보 조회
     	//요청주소 http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustFrcstDspth
     	//서비스URL http://apis.data.go.kr/B552584/ArpltnInforInqireSvc
